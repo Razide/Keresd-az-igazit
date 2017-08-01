@@ -15,7 +15,7 @@
 <body>
  
 <div id='layer0'><div class="container">
-    <h1>Randikvíz nők pontozására</h1>   
+    <h1>Keresd az igazit - férfiak számára</h1>   
     <p>Ezt az appot férfiaknak készítettem, hogy felmérjék randin egy ismeretlen nő alkalmasságát a hosszú távú kapcsolatra. Az app 30 kérdést tesz fel a nőnek, amik egyenként pár másodperc alatt egyetlen gombnyomással megválaszolhatók. Intim kérdések, nem kell látnod, hogy egész pontosan miket válaszolt, de a végső értékelésben elolvashatod, hogy a válaszok milyen jellemről tanúskodnak. Persze megbeszélhetitek, hogy nyíltan, neked is megválaszolja a kérdéseket.</p>
     <p>A teszt során a nő zászlókat kap a válaszai alapján. Ezek a következők lehetnek:</p>
     <ul><li>zöld – ezt szeretjük, jó ember ül veled szemben</li>
@@ -24,7 +24,7 @@
         </ul>
     <p>A zászlókat és a kiértékelést csak a teszt utolsó lapon láthatod, a nő nem tudja, miként értékeljük az adott válaszát.</p>
     <p>A kérdéseket a manoszféra kollektív tudásából merítettem, és a világ bármely pontján bármely nővel elvégezhető, hogy kiderüljön alkalmassága.</p>
-    <p>A teszt elején megadsz egy négy számjegyből álló pin kódot (lehetőleg ne a születési évedet), és ezt a kérdéssorozat végén is meg kell adnod, hogy elolvasd az értékelést. Így nyugodt lehetsz benne, hogy randipartnered nem fogja látni az értékelést, ha nem akarod neki megmutatni.</p>
+    <p>A teszt elején megadsz egy négy számjegyből álló pin kódot (lehetőleg ne a születési évedet), és ezt a kérdéssorozat végén is meg kell adnod, hogy elolvasd az értékelést. Így nyugodt lehetsz benne, hogy randipartnered nem fogja látni az értékelést, ha nem akarod neki megmutatni. Mert most megadod a számsort, és átadod a kezébe a telefonodat, és a kvíz végén visszakéred.</p>
     
         
     <form>
@@ -164,7 +164,7 @@
     <div class="container">
     <div class="row"><h1>Hiányzott életedből valamelyik szülőd, vagy erőszakos, figyelmetlen, rossz szülőd volt?</h1></div>
     <div class="row">  
-        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow('')">
+        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow()">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="green()">
     </div>
@@ -174,7 +174,7 @@
     <div class="container">
     <div class="row"><h1>Gyerekként ért abúzus? Zaklatás, nemi erőszak, egyéb kényszerítés?</h1></div>
     <div class="row">  
-        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('')">
+        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red()">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
     </div>
@@ -200,7 +200,7 @@
     <div class="container">
     <div class="row"><h1>Szeretsz shoppingolni, ami miatt gyakran lemerül a bank-/hitelkártyád?</h1></div>
     <div class="row">  
-        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="Piros('Telhetetlen')">
+        <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Telhetetlen')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
     </div>
@@ -389,9 +389,9 @@
         <ul id =yellowtraits></ul>
      <h4>Rossz jellemvonások:</h4>
         <ul id =redtraits></ul>
-    </div>
     <h3>Rövid összefoglalás:</h3>
     <p id="summary"></p>
+    </div>
 </div>
     
 <div class="footerholder">
