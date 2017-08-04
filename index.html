@@ -8,14 +8,19 @@
   <link rel="stylesheet" href="css/buttons.css"> <!-- http://unicorn-ui.com/buttons/ -->
   <link rel="stylesheet" href="css/font-awesome.css"> <!-- ha nincs fa- ikon a html-ben, akkor ezt a sort törölni -->
   <link rel="stylesheet" href="css/custom.css">
+  <script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine.js"></script>
+        <script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine-html.js"></script>
+<script type="text/javascript" src="spec/helper.js"></script>
+        <script type="text/javascript" src="spec/index.js"></script>
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/jquery-ui.min.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script src="js/admob.js"></script>
 </head>
 <body>
- 
+
 <div id='layer0'><div class="container">
-    <h1>Keresd az igazit - férfiak számára</h1>   
+    <h1>Keresd az igazit - férfiak számára</h1>
     <p>Ezt az appot férfiaknak készítettem, hogy felmérjék randin egy ismeretlen nő alkalmasságát a hosszú távú kapcsolatra. Az app 30 kérdést tesz fel a nőnek, amik egyenként pár másodperc alatt egyetlen gombnyomással megválaszolhatók. Intim kérdések, nem kell látnod, hogy egész pontosan miket válaszolt, de a végső értékelésben elolvashatod, hogy a válaszok milyen jellemről tanúskodnak. Persze megbeszélhetitek, hogy nyíltan, neked is megválaszolja a kérdéseket.</p>
     <p>A teszt során a nő zászlókat kap a válaszai alapján. Ezek a következők lehetnek:</p>
     <ul><li>zöld – ezt szeretjük, jó ember ül veled szemben</li>
@@ -25,8 +30,7 @@
     <p>A zászlókat és a kiértékelést csak a teszt utolsó lapon láthatod, a nő nem tudja, miként értékeljük az adott válaszát.</p>
     <p>A kérdéseket a manoszféra kollektív tudásából merítettem, és a világ bármely pontján bármely nővel elvégezhető, hogy kiderüljön alkalmassága.</p>
     <p>A teszt elején megadsz egy négy számjegyből álló pin kódot (lehetőleg ne a születési évedet), és ezt a kérdéssorozat végén is meg kell adnod, hogy elolvasd az értékelést. Így nyugodt lehetsz benne, hogy randipartnered nem fogja látni az értékelést, ha nem akarod neki megmutatni. Mert most megadod a számsort, és átadod a kezébe a telefonodat, és a kvíz végén visszakéred.</p>
-    
-        
+
     <form>
         <div class="form-group">
             <label for="pincode">Pin kód</label>
@@ -34,11 +38,11 @@
         </div>
         <p id="pinnotvalid" style="color:red"></p>
         <input type="button" value="Induljon a teszt" class="button button-block button-rounded button-caution button-large" onclick="elsopin()">
-        </form>
-        
+    </form>
+
         <br />
-        
-    
+
+
     </div></div>
 
 <div id="layer1">
@@ -55,18 +59,18 @@
 <div id='layer2'>
     <div class="container">
     <div class="row"><h1>Szereted a munkádat, és eltökélten dolgozol?</h1></div>
-    <div class="row">       
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Szereti a munkáját')">
         <br />
-        <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">       
+        <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
     </div>
     </div>
 </div>
-    
+
 <div id='layer3'>
     <div class="container">
     <div class="row"><h1>Rendszeresen, hetente többször sportolsz?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Sportol')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -76,7 +80,7 @@
 <div id='layer4'>
     <div class="container">
     <div class="row"><h1>Szeretsz a párodnak olyan szívességeket megtenni a hálószobában vagy máshol, amire egyébként nem kértek meg?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green()">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -86,7 +90,7 @@
 <div id='layer5'>
     <div class="container">
     <div class="row"><h1>Enyhén konzervatív vagy, tartod magad a férfi-női szerep tradícióihoz?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Tradíciótisztelő')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="yellow()">
@@ -108,7 +112,7 @@
 <div id='layer7'>
         <div class="container">
     <div class="row"><h1>Jellemző rád, hogy csüggsz a párodon, nehezen tudsz külön programokat elképzelni?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Ragaszkodó')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -118,7 +122,7 @@
 <div id='layer8'>
         <div class="container">
     <div class="row"><h1>Könnyen felidegesíted magad?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow('Könnyen felidegesíti magát')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="green('Nehéz felidegesíteni')">
@@ -128,7 +132,7 @@
 <div id='layer9'>
         <div class="container">
     <div class="row"><h1>Vidám, pozitív személyiség vagy?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Vidám')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -140,7 +144,7 @@
 <div id='layer10'>
     <div class="container">
     <div class="row"><h1>Kedves, támogató vagy másokkal, még az állatokkal is?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Kedves')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -151,7 +155,7 @@
 <div id='layer11'>
     <div class="container">
     <div class="row"><h1>Szereted, ha a párod határozottan hozza meg a döntéseket, akár helyetted is?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="green('Imponál neki a férfi határozottság')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -163,7 +167,7 @@
 <div id='layer12'>
     <div class="container">
     <div class="row"><h1>Hiányzott életedből valamelyik szülőd, vagy erőszakos, figyelmetlen, rossz szülőd volt?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow()">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="green()">
@@ -173,7 +177,7 @@
 <div id='layer13'>
     <div class="container">
     <div class="row"><h1>Gyerekként ért abúzus? Zaklatás, nemi erőszak, egyéb kényszerítés?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red()">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -183,7 +187,7 @@
 <div id='layer14'>
     <div class="container">
     <div class="row"><h1>Alkohol/drog – a legalsót válaszd ki, amelyik rád illik</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Nem iszok, nem dohányzok, nem drogozok" class="button button-block button-rounded button-caution button-large" onclick="green('Józan életű')">
         <br />
         <input type="button" value="Max. heti egyszer kevés alkohol" class="button button-block button-rounded button-caution button-large" onclick="next('')">
@@ -199,7 +203,7 @@
 <div id='layer15'>
     <div class="container">
     <div class="row"><h1>Szeretsz shoppingolni, ami miatt gyakran lemerül a bank-/hitelkártyád?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Telhetetlen')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -209,7 +213,7 @@
 <div id='layer16'>
     <div class="container">
     <div class="row"><h1>Egy vagy több exeddel legalább heti egyszer tartod a kapcsolatot, aki nem gyermeked apja?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow('Exekkel tartja a kapcsolatot')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -219,7 +223,7 @@
 <div id='layer17'>
     <div class="container">
     <div class="row"><h1>Nagyméretű tetkók, extrém piercingek, fiúsan rövid hajviselet, rikító hajfestés  – van valamelyik?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Túlzottan elégedetlen a külsejével')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -229,7 +233,7 @@
 <div id='layer18'>
     <div class="container">
     <div class="row"><h1>Szereted a téged körülvevő embereket manipulálni, hogy az akaratod szerint viselkedjenek?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Manipulatív, akarnok')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -239,7 +243,7 @@
 <div id='layer19'>
     <div class="container">
     <div class="row"><h1>Áldozatnak érzed magad? Téged mindig mindenki csak elnyom?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Áldozat, önbizalomhiány')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -249,7 +253,7 @@
 <div id='layer20'>
     <div class="container">
     <div class="row"><h1>Követtél már el bűncselekményt, amiért elítéltek?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Bűnözői múlt')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -259,7 +263,7 @@
 <div id='layer21'>
     <div class="container">
     <div class="row"><h1>Nárcisztikus / borderline személyiségzavarban szenvedsz? Ez a rendestől jóval nagyobb mértékű hangulatingadozást, empátiahiányt, dührohamokat, érzelmi manipulációt jelent.</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Borderline betegség. Kezelésre szorul. Nem a tiédre.')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -269,7 +273,7 @@
 <div id='layer22'>
     <div class="container">
     <div class="row"><h1>Ragályos nemibetegséged van vagy egyéb halálos betegségben szenvedsz?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Nemibeteg, ragályos vagy halálos beteg. Nem a te feladatod a gyógyítás.')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -279,7 +283,7 @@
 <div id='layer23'>
     <div class="container">
     <div class="row"><h1>Kinek az orgazmusa számít igazán?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Csak az enyém" class="button button-block button-rounded button-caution button-large" onclick="red('Totál önző az ágyban')">
         <br />
         <input type="button" value="Csak a férfié" class="button button-block button-rounded button-caution button-large" onclick="red('Nem törődik saját szexualitásával')">
@@ -291,7 +295,7 @@
 <div id='layer24'>
     <div class="container">
     <div class="row"><h1>Ha nincs semmi probléma, csinálsz valami problémát?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Bajkeverő. Főleg veled szemben.')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -301,7 +305,7 @@
 <div id='layer25'>
     <div class="container">
     <div class="row"><h1>Impulzív vagy? Hirtelen ötlettől vezérelve csinálsz őrültségeket, vagy biztatsz rá másokat?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Túl impulzív, kiszámíthatatlan, szeszélyes.')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -311,7 +315,7 @@
 <div id='layer26'>
     <div class="container">
     <div class="row"><h1>Jellemző rád a passzív-agresszív viselkedés? Az embereket arra készteted ezzel, hogy hazudjanak neked és titkolózzanak?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Passzív-agresszív')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -321,7 +325,7 @@
 <div id='layer27'>
     <div class="container">
     <div class="row"><h1>Jársz pszichiáterhez olyan lelki betegség, személyiségzavar miatt, ami nem szorongás vagy depresszió?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="red('Lelki beteg')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -331,7 +335,7 @@
 <div id='layer28'>
     <div class="container">
     <div class="row"><h1>Csak fiú barátaid vannak?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="yellow('Sok fiú legyeskedik körülötte, nincs barátnője')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -341,7 +345,7 @@
 <div id='layer29'>
     <div class="container">
     <div class="row"><h1>Voltál már 3 évnél tovább egy munkahelyen, vagy ha diák vagy, még sosem kellett évet ismételned?</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Igen" class="button button-block button-rounded button-caution button-large" onclick="next('')">
         <br />
         <input type="button" value="Nem" class="button button-block button-rounded button-caution button-large" onclick="red('Kitartás hiánya')">
@@ -351,7 +355,7 @@
 <div id='layer30'>
     <div class="container">
     <div class="row"><h1>Legjobb barátnőd...</h1></div>
-    <div class="row">  
+    <div class="row">
         <input type="button" value="Forgatja a pasikat" class="button button-block button-rounded button-caution button-large" onclick="red('Pasifaló szociokulturális környezet')">
         <br />
         <input type="button" value="Nincs kapcsolata jó ideje" class="button button-block button-rounded button-caution button-large" onclick="next()">
@@ -373,7 +377,7 @@
     </form>
     </div>
 </div>
-    
+
 <div id='layer32'>
     <div class="container">
     <h1>Értékelés</h1>
@@ -393,18 +397,18 @@
     <p id="summary"></p>
     </div>
 </div>
-    
+
 <div class="footerholder">
     <div class="footer">
      <div class="progress">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1"
   aria-valuemin="0" aria-valuemax="100" style="width:1%">
   </div>
-</div> 
-        
+</div>
+
     </div>
 </div>
-    
+
 <script>
     var layer=0;
     var progress = 1;
@@ -419,7 +423,8 @@
     var joJellemvonasok="";
     var ketesJellemvonasok="";
     var rosszJellemvonasok="";
-    
+	
+
     function elsopin(){
         var x, text;
 
@@ -435,7 +440,7 @@
         }
         document.getElementById("pinnotvalid").innerHTML = text;
     }
-    
+
     function ertekeles(){
         //pontok kiírása
         document.getElementById("greenflagid").innerHTML = "Zöld zászló: " + greenflag;
@@ -459,13 +464,13 @@
         document.getElementById("yellowtraits").innerHTML = ketesJellemvonasok;
         // Rossz jellemvonások kiírása
         for (i = 0; i < redattr.length; i++) {
-            rosszJellemvonasok += "<li>" + redattr[i] + "</li>";   
+            rosszJellemvonasok += "<li>" + redattr[i] + "</li>";
         }
         if (rosszJellemvonasok==''){
             rosszJellemvonasok="Nincsenek ilyenek. Ügyesen hazudik, vagy jó parti?";
         }
         document.getElementById("redtraits").innerHTML = rosszJellemvonasok;
-        
+
         // szöveges értékelés
         if (redflag==0 && yellowflag < 3 && greenflag > 5){
             document.getElementById("summary").innerHTML = "Figyelj, nagyon jó parti. Beszélgess még vele zenéről, filmekről, nevettesd meg, és határozottan kérj tőle második randit.";
@@ -474,10 +479,10 @@
         }else{
             document.getElementById("summary").innerHTML = "Most jól nézd meg. Ha jó csaj, akkor dugd és dobd, ha van hozzá gusztusod, és mindenképp rád akar mászni. Ha a lelki defektusai mellett még ronda is, akkor menekülj azonnal.";
         }
-        
+
         next();
     }
-    
+
     function pin2(){
         var x, text;
         // Get the value of the input field with id="numb"
@@ -494,7 +499,7 @@
     function red(quirk){
         if (quirk != undefined) {
             redattr.push(quirk);
-        }; 
+        };
         new Audio('audio/red.mp3').play()
         redflag++;
         next();
@@ -502,35 +507,46 @@
     function yellow(quirk){
         if (quirk != undefined) {
             yellowattr.push(quirk);
-        }; 
+        };
         yellowflag++;
         next();
     }
     function green(quirk){
         if (quirk != undefined) {
             greenattr.push(quirk);
-        }; 
+        };
         new Audio('audio/green.mp3').play()
         greenflag++;
         next();
     }
     // lapozás a következő oldalra
-    function next() { 
+    function next() {
       $( "#layer" + (layer+1) ).show( "slide", { direction: 'right' }, 400 );
       $( "#layer"+(layer) ).hide( "drop", { direction: 'left' }, 400 );
         if (layer > 29 ) {
-            $( ".footerholder" ).hide();   
+            $( ".footerholder" ).hide();
         }else{
-            $( ".footerholder" ).show();      
+            $( ".footerholder" ).show();
         }
       layer++;
       // progress bar animation
       progress = (layer) / layernumber *100;
-      $('.progress-bar').css('width', progress+'%').attr('aria-valuenow', progress);   
+      $('.progress-bar').css('width', progress+'%').attr('aria-valuenow', progress);
     }
+	
 
-
+	//disable enter button on form submit */
+	$('form input').on('keypress', function(e) {
+		return e.which !== 13;
+	});
+    	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady() {
+		console.log("console.log works well");
+	}		
+	
 </script>
- 
+
+
 </body>
 </html>
