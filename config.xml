@@ -1,14 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>blank</name>
+<widget id="com.razide.keresdazigazit" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Keresd az igazit</name>
     <description>
-        A blank PhoneGap app.
+        Kérdéssorozat a nők hosszú távú kapcsolatra való alkalmasságának megállapítására az első randin.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
-    <access origin="*" />    
-	<gap:plugin name="cordova-plugin-admob-free" source="npm"/>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="14" />
+        <allow-intent href="market:*" />
+    </platform>
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="portrait" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <icon platform="android" qualifier="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />
+    <icon platform="android" qualifier="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
+    <icon platform="android" qualifier="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
+    <icon platform="android" qualifier="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
+    <icon platform="android" qualifier="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
+    <splash src="web_hi_res_512.png" />
+    <plugin name="cordova-plugin-admob-free" spec="~0.10.0" />
     <engine name="android" spec="~6.1.2" />
 </widget>
