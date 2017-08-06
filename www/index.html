@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Quiz</title>
+  <title>Keresd az igazit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/buttons.css"> <!-- http://unicorn-ui.com/buttons/ -->
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/jquery-ui.min.js"></script>
   <script src="js/bootstrap.js"></script>
@@ -18,12 +19,12 @@
     <h1>Keresd az igazit - férfiak számára</h1>
     <p>Ezt az appot férfiaknak készítettem, hogy felmérjék randin egy ismeretlen nő alkalmasságát a hosszú távú kapcsolatra. Az app 30 kérdést tesz fel a nőnek, amik egyenként pár másodperc alatt egyetlen gombnyomással megválaszolhatók. Intim kérdések, nem kell látnod, hogy egész pontosan miket válaszolt, de a végső értékelésben elolvashatod, hogy a válaszok milyen jellemről tanúskodnak. Persze megbeszélhetitek, hogy nyíltan, neked is megválaszolja a kérdéseket.</p>
     <p>A teszt során a nő zászlókat kap a válaszai alapján. Ezek a következők lehetnek:</p>
-    <ul><li>zöld – ezt szeretjük, jó ember ül veled szemben</li>
-    <li>sárga – aggasztó dolgok, amik mélyebb problémákra utalnak</li>
-    <li>piros – az esetek túlnyomó részében ha egy piros zászlót is meglátsz, akkor menekülnöd kell, vagy nem sokat remélni a további kapcsolattól.</li>
+    <ul><li>zöld – ezt szeretjük, jó ember ül veled szemben. Ilyen hangot hallasz, ha ilyen jó választ nyom: <span style="font-size: 1.4em" class="fa fa-play-circle-o" aria-hidden="true" onclick="new Audio('audio/green.mp3').play()"></span></li>
+    <li>sárga – aggasztó dolgok, amik mélyebb problémákra utalnak. Erre nincs hang.</li>
+    <li>piros – az esetek túlnyomó részében ha egy piros zászlót is meglátsz, akkor menekülnöd kell, vagy nem sokat remélni a további kapcsolattól. Ilyen hangot hallasz, ha ilyen rossz választ nyom: <span style="font-size: 1.4em" class="fa fa-play-circle-o" aria-hidden="true" onclick="new Audio('audio/red.mp3').play()"></span></li>
         </ul>
-    <p>A zászlókat és a kiértékelést csak a teszt utolsó lapon láthatod, a nő nem tudja, miként értékeljük az adott válaszát.</p>
-    <p>A kérdéseket a manoszféra kollektív tudásából merítettem, és a világ bármely pontján bármely nővel elvégezhető, hogy kiderüljön alkalmassága.</p>
+    <p>A hangok alapján már a teszt kitöltése közben képet kaphatsz róla, hogy nagyjából milyen lesz a végeredmény.</p>
+    <p>A kérdéseket a manoszféra kollektív tudásából merítettem, és a világ bármely pontján bármely nővel elvégezhető, hogy kiderüljön alkalmassága. Ezek univerzális értékek, és nem olyan lényegtelen dolgokról szólnak, hogy bírja-e a metált, vagy milyen gyakran jár színházba.</p>
     <p>A teszt elején megadsz egy négy számjegyből álló pin kódot (lehetőleg ne a születési évedet), és ezt a kérdéssorozat végén is meg kell adnod, hogy elolvasd az értékelést. Így nyugodt lehetsz benne, hogy randipartnered nem fogja látni az értékelést, ha nem akarod neki megmutatni. Mert most megadod a számsort, és átadod a kezébe a telefonodat, és a kvíz végén visszakéred.</p>
 
     <form>
@@ -476,7 +477,9 @@
         document.getElementById("redtraits").innerHTML = rosszJellemvonasok;
 
         // szöveges értékelés
-        if (redflag==0 && yellowflag < 3 && greenflag > 5){
+        if (redflag==0 && yellowflag==0 && greenflag > 7){
+            document.getElementById("summary").innerHTML = "Egy unikornis! Ez már túl szép, hogy igaz legyen. Ha mégis igaz lenne, akkor ha most azonnal feleségül kéred, azzal nem követsz el hibát. Célod most az legyen, hogy megtartsd az érdeklődését és feltétlenül kérsz második randit is.";
+        }else if (redflag==0 && yellowflag < 3 && greenflag > 5){
             document.getElementById("summary").innerHTML = "Figyelj, nagyon jó parti. Beszélgess még vele zenéről, filmekről, nevettesd meg, és határozottan kérj tőle második randit.";
         }else if(greenflag > (yellowflag+redflag)){
                document.getElementById("summary").innerHTML = "Van defektje bőven a nőnek, de van rá esély, hogy valami jó is kisül a dologból. Ehhez résen kell lenned, figyelned kell a kétes és rossz jellemvonásokra, és azonnal leszerelni azokat, amint megmutatkoznak. Ez férfit kíván.";
@@ -489,22 +492,21 @@
 
     function pin2(){
         var x, text;
-        // Get the value of the input field with id="numb"
+        // "pincode2" mező értékének lekérése
         x = document.getElementById("pincode2").value;
-        // If x is Not a Number or less than 999 or greater than 9999
+        // Most jól leellenőrizzük, hogy emlékszik-e a pin kódra
         if (x===pincode1) {
             ertekeles();
         } else {
-            text = "nem ez a kód";
+            document.getElementById("pinnotvalid2").innerHTML = "nem ez a kód";
         }
-        document.getElementById("pinnotvalid2").innerHTML = text;
     }
 
     function red(quirk){
         if (quirk != undefined) {
             redattr.push(quirk);
         };
-        new Audio('audio/red.mp3').play()
+        new Audio('audio/red.mp3').play();
         redflag++;
         next();
     }
